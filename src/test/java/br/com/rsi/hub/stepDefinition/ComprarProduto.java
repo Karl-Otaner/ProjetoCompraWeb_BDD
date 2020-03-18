@@ -11,20 +11,22 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class ComprarProduto {
-	public static WebDriver driver;
+	public WebDriver driver;
 	
 	@Dado("^Usuario esta no site do Advantage Shopping$")
-	public void usuario_esta_no_site_do_Advantage_Shopping() throws Throwable {
+	public void usuarioEstaNoSiteDoAdvantageShopping() throws Throwable {
 		
-		driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.get("http://advantageonlineshopping.com/#/");
+		
 
 	}
 
 	@Quando("^Fazer login$")
-	public void fazer_login() throws Throwable {
+	public void fazerLogin() throws Throwable {
 		driver.findElement(By.id("menuUser")).click();
 		driver.findElement(By.name("username")).sendKeys("Karl_Otaner");
 		driver.findElement(By.name("password")).sendKeys("Aa123456");
@@ -34,38 +36,60 @@ public class ComprarProduto {
 	}
 
 	@Quando("^escolhe um produto pela tela principal$")
-	public void escolhe_um_produto_pela_tela_principal() throws Throwable {
+	public void escolheUmProdutoPelaTelaPrincipal() throws Throwable {
+		//HomePage
 		driver.findElement(By.id("laptopsImg")).click();
 
 
 	}
 
 	@Quando("^adicionar ao carrinho e fazer checkout$")
-	public void adicionar_ao_carrinho_e_fazer_checkout() throws Throwable {
+	public void adicionarAoCarrinhoEFazerCheckout() throws Throwable {
+		//Produto Page
+		driver.findElement(By.id("5")).click();
+		driver.findElement(By.id("bunny")).click();
+		driver.findElement(By.name("save_to_cart")).click();
+		//add wait clickable. id "checkOutPopUp".click()
+		
 
 
 	}
 
 	@Entao("^clicar em next digitar um usuario e senha para boleto e finalizar a compra$")
-	public void clicar_em_next_digitar_um_usuario_e_senha_para_boleto_e_finalizar_a_compra() throws Throwable {
+	public void clicarEmNextDigitarUmUsuarioESenhaParaBoletoEFinalizarACompra() throws Throwable {
+		// SHIPPING DETAILSPage
+		driver.findElement(By.name("countryListbox")).sendKeys("Brazil");
+		driver.findElement(By.id("next_btn")).click();
+		
+		// PAYMENT METHODPage
+		driver.findElement(By.name("safepay_username")).sendKeys("Karl123");
+		driver.findElement(By.name("safepay_password")).sendKeys("Ka12");
+		driver.findElement(By.id("pay_now_btn_SAFEPAY")).click();
+		//page Order Payment
+		//Assert ("Thank you for buying with Advantage") & print
 
+		
 
 	}
 
 	@Quando("^escolher um Headphone sem saldo$")
-	public void escolher_um_Headphone_sem_saldo() throws Throwable {
+	public void escolherUmHeadphoneSemSaldo() throws Throwable {
+		driver.findElement(By.id("headphonesTxt")).click();
 
 
 	}
 
 	@Quando("^ir para tela do produto$")
-	public void ir_para_tela_do_produto() throws Throwable {
+	public void irParaTelaDoProduto() throws Throwable {
+		driver.findElement(By.id("13")).click();
 
 
 	}
 
 	@Entao("^validar que nao ha saldo$")
-	public void validar_que_nao_ha_saldo() throws Throwable {
+	public void validarQueNaoHaSaldo() throws Throwable {
+//		assert name "SOLD OUT"
+		
 
 
 	}

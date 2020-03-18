@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 		features = "Feature",
 		glue = "br.com.rsi.hub.stepDefinition",
 		plugin = "pretty",
-		monochrome = false,
+		monochrome = true,
 		snippets = SnippetType.CAMELCASE
 		)
 
