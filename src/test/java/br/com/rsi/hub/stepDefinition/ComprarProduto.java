@@ -21,12 +21,14 @@ public class ComprarProduto {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("http://advantageonlineshopping.com/#/");
+		Thread.sleep(5000);
 		
 
 	}
 
 	@Quando("^Fazer login$")
 	public void fazerLogin() throws Throwable {
+		
 		driver.findElement(By.id("menuUser")).click();
 		driver.findElement(By.name("username")).sendKeys("Karl_Otaner");
 		driver.findElement(By.name("password")).sendKeys("Aa123456");
