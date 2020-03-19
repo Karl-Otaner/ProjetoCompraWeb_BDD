@@ -6,41 +6,51 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import br.com.rsi.bdd.dataProvider.ConfigFileReader;
+import br.com.rsi.bdd.manager.PageObjectManager;
+import br.com.rsi.bdd.manager.WebDriverManager;
+import br.com.rsi.hub.pageObjectFactory.CartPage_POF;
+import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
+import br.com.rsi.hub.pageObjectFactory.LoginPage_POF;
+import br.com.rsi.hub.pageObjectFactory.ProductsPage_POF;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
-public class ComprarProduto {
-	public WebDriver driver;
+public class BuyProductStep {
+	WebDriver driver;
+	HomePage_POF home;
+	LoginPage_POF login;
+	ProductsPage_POF product;
+	CartPage_POF cart;
+	PageObjectManager objectManager;
+	ConfigFileReader configFileReader;
+	WebDriverManager webDriverManager;
+	
 	
 	@Dado("^Usuario esta no site do Advantage Shopping$")
 	public void usuarioEstaNoSiteDoAdvantageShopping() throws Throwable {
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-		driver.get("http://advantageonlineshopping.com/#/");
-		Thread.sleep(5000);
+//		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+//		WebDriver driver = new ChromeDriver();
+//		driver.manage().window().maximize();
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		driver.get("http://advantageonlineshopping.com/#/");
 		
 
 	}
 
 	@Quando("^Fazer login$")
 	public void fazerLogin() throws Throwable {
-		
-		driver.findElement(By.id("menuUser")).click();
-		driver.findElement(By.name("username")).sendKeys("Karl_Otaner");
-		driver.findElement(By.name("password")).sendKeys("Aa123456");
-		driver.findElement(By.id("sign_in_btnundefined")).click();
-
+		home.linkLogin();
+		login.userName();
+		login.passWord();
+		login.btnSignIn();
 
 	}
 
 	@Quando("^escolhe um produto pela tela principal$")
 	public void escolheUmProdutoPelaTelaPrincipal() throws Throwable {
-		//HomePage
-		driver.findElement(By.id("laptopsImg")).click();
 
 
 	}
