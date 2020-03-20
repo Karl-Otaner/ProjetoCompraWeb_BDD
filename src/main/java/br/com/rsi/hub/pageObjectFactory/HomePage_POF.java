@@ -6,15 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import br.com.rsi.bdd.dataProvider.ConfigFileReader;
+import br.com.rsi.hub.dataProvider.ConfigFileReader;
 
 public class HomePage_POF {
 	WebDriver driver;
-//	ConfigFileReader configFileReader;
 
 	public HomePage_POF(WebDriver driver) {
 		this.driver = driver;
-//		configFileReader = new ConfigFileReader();
 		PageFactory.initElements(driver, this);
 	}
 
@@ -29,6 +27,9 @@ public class HomePage_POF {
 
 	@FindBy(how = How.ID, using = "headphonesTxt")
 	private WebElement headPhones;
+	
+	@FindBy(how = How.ID, using = "menuCart")
+	private WebElement menuCart;
 
 	public void linkLogin() {
 		linkLogin.click();
@@ -44,6 +45,10 @@ public class HomePage_POF {
 
 	public void headPhones() {
 		headPhones.click();
+	}
+	
+	public void menuCart() {
+		menuCart.click();
 	}
 
 }

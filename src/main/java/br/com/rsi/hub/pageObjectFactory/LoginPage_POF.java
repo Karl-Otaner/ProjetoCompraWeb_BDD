@@ -38,8 +38,8 @@ public class LoginPage_POF {
 		passWord.sendKeys(mass.passWord());
 	}
 	
-	public WebElement btnSignIn() {
-		return btnSignIn;
+	public void btnSignIn() {
+		btnSignIn.click();
 	}
 	
 		

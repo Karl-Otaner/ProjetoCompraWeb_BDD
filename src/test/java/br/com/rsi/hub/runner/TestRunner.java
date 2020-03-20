@@ -11,8 +11,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "Feature",
 		glue = {"br.com.rsi.hub.stepDefinition"},
-		plugin = "pretty",
 		monochrome = true,
+		plugin = {"pretty", "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" },
 		snippets = SnippetType.CAMELCASE
 		)
 

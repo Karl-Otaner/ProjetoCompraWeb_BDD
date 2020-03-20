@@ -7,6 +7,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductsPage_POF {
+	WebDriver driver;
 	
 	public ProductsPage_POF(WebDriver driver) {
 		PageFactory.initElements(driver, this);

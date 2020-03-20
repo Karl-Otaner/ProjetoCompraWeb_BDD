@@ -1,6 +1,6 @@
 package br.com.rsi.bdd.manager;
 
-import br.com.rsi.bdd.dataProvider.ConfigFileReader;
+import br.com.rsi.hub.dataProvider.ConfigFileReader;
 
 public class FileReaderManager {
 	

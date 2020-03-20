@@ -2,8 +2,10 @@ package br.com.rsi.bdd.manager;
 
 import org.openqa.selenium.WebDriver;
 
+import br.com.rsi.hub.pageObjectFactory.CartPage_POF;
 import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
 import br.com.rsi.hub.pageObjectFactory.LoginPage_POF;
+import br.com.rsi.hub.pageObjectFactory.OrdenPaymentPage;
 import br.com.rsi.hub.pageObjectFactory.ProductsPage_POF;
 
 public class PageObjectManager {
@@ -11,6 +13,8 @@ public class PageObjectManager {
 	private HomePage_POF homePage;
 	private LoginPage_POF loginPage;
 	private ProductsPage_POF productsPage;
+	private CartPage_POF cartPage;
+	private OrdenPaymentPage ordenPayment;
 	
 	
 	public PageObjectManager(WebDriver driver) {
@@ -29,4 +33,12 @@ public class PageObjectManager {
 		return (productsPage == null) ? productsPage = new ProductsPage_POF(driver) : productsPage;
 	}
 	
+	public CartPage_POF getCartPage_POF() {
+		return (cartPage == null) ? cartPage = new CartPage_POF(driver) : cartPage;
+	}
+	
+	public OrdenPaymentPage getOrdenPaymentPage() {
+		return (ordenPayment == null) ? ordenPayment = new OrdenPaymentPage(driver) : ordenPayment;
+				
+	}
 }

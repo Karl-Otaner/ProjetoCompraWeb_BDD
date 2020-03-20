@@ -12,15 +12,12 @@ public class CartPage_POF {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.ID, using = "menuCart")
-	private WebElement menuCart;
+	
 	
 	@FindBy(how = How.ID, using = "checkOutButton")
 	private WebElement btnCheckOut;
 	
-	public void menuCart() {
-		menuCart.click();
-	}
+	
 	
 	public void btnCheckOut() {
 		btnCheckOut.click();
