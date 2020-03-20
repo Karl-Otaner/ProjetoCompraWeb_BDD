@@ -1,12 +1,11 @@
 package br.com.rsi.hub.stepDefinition;
 
+import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import br.com.rsi.bdd.manager.PageObjectManager;
-import br.com.rsi.bdd.manager.WebDriverManager;
 import br.com.rsi.hub.context.TestContext;
-import br.com.rsi.hub.dataProvider.ConfigFileReader;
 import br.com.rsi.hub.pageObjectFactory.CartPage_POF;
 import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
 import br.com.rsi.hub.pageObjectFactory.LoginPage_POF;
@@ -22,9 +21,9 @@ public class BuyProductStep {
 	LoginPage_POF login;
 	ProductsPage_POF product;
 	CartPage_POF cart;
-	PageObjectManager objectManager;
-	ConfigFileReader configFileReader;
-	WebDriverManager webDriverManager;
+//	PageObjectManager objectManager;
+//	ConfigFileReader configFileReader;
+//	WebDriverManager webDriverManager;
 	TestContext testContext;
 	OrdenPaymentPage ordenPayment;
 	
@@ -34,7 +33,7 @@ public class BuyProductStep {
 		login = testContext.getPageObjectManager().getLoginPage_POF();
 		product = testContext.getPageObjectManager().getProductsPage_POF();
 		cart = testContext.getPageObjectManager().getCartPage_POF();
-		webDriverManager = testContext.getDriverManager();
+//		webDriverManager = testContext.getDriverManager();
 	}
 	
 	
@@ -78,30 +77,26 @@ public class BuyProductStep {
 	
 	@Entao("^validar a compra feita$")
 	public void validarACompraFeita() throws Throwable {
-		
+		assertTrue(ordenPayment.confirmOrderPayment().contains("Thank you for buying with Advantage"));
 	   
 	}
 
 
 	@Quando("^escolher um Headphone sem saldo$")
 	public void escolherUmHeadphoneSemSaldo() throws Throwable {
-		driver.findElement(By.id("headphonesTxt")).click();
-
+		home.headPhones();
 
 	}
 
 	@Quando("^ir para tela do produto$")
 	public void irParaTelaDoProduto() throws Throwable {
-		driver.findElement(By.id("13")).click();
-
+		product.headPhoneBose();
 
 	}
 
 	@Entao("^validar que nao ha saldo$")
 	public void validarQueNaoHaSaldo() throws Throwable {
-//		assert name "SOLD OUT"
-		
-
+		assertTrue(product.soudOut().contains("SOLD OUT"));
 
 	}
 

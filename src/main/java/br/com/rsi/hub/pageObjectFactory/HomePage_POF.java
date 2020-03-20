@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.rsi.hub.dataProvider.ConfigFileReader;
 
@@ -22,10 +24,10 @@ public class HomePage_POF {
 	@FindBy(how = How.XPATH, using = "//header//li[3]")
 	private WebElement logged;
 
-	@FindBy(how = How.ID, using = "uselaptopsImg")
+	@FindBy(how = How.ID, using = "laptopsImg")
 	private WebElement laptop;
 
-	@FindBy(how = How.ID, using = "headphonesTxt")
+	@FindBy(how = How.ID, using = "headphonesImg")
 	private WebElement headPhones;
 	
 	@FindBy(how = How.ID, using = "menuCart")
@@ -40,6 +42,8 @@ public class HomePage_POF {
 	}
 
 	public void lapTop() {
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOf(laptop));
 		laptop.click();
 	}
 

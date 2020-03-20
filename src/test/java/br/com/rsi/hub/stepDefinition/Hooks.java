@@ -17,8 +17,8 @@ import cucumber.api.java.Before;
 public class Hooks {
 	private TestContext context;
 
-	public Hooks(TestContext contexto) {
-		this.context = contexto;
+	public Hooks(TestContext context) {
+		this.context = context;
 	}
 
 	@Before

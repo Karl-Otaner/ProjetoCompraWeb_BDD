@@ -47,8 +47,12 @@ public class ProductsPage_POF {
 		headPhones.click();
 	}
 	
-	public void soudOut() {
-		soudOut.getText();
+	public void headPhoneBose() {
+		headPhoneBose.click();
+	}
+	
+	public String soudOut() {
+		return soudOut.getText();
 	}
 
 }

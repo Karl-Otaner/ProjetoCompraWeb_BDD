@@ -5,12 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.rsi.hub.Utility.MassOfData;
 
 public class OrdenPaymentPage {
 	WebDriver driver;
 	MassOfData mass;
+	WebDriverWait wait = new WebDriverWait(driver, 15);
 	
 	public OrdenPaymentPage(WebDriver driver) {
 		this.driver = driver;
@@ -21,6 +24,9 @@ public class OrdenPaymentPage {
 	@FindBy(how = How.ID, using = "next_btn")
 	private WebElement btnNext;
 	
+	@FindBy(how = How.ID, using = "countryListbox")
+	private WebElement country;
+	
 	@FindBy(how = How.NAME, using = "safepay_username")
 	private WebElement safePayUserName;
 	
@@ -30,8 +36,16 @@ public class OrdenPaymentPage {
 	@FindBy(how = How.ID, using = "pay_now_btn_SAFEPAY")
 	private WebElement btnPayNow;
 	
+	@FindBy(how = How.XPATH, using = "//span[@class='roboto-regular ng-scope']")
+	private WebElement confirmOrderPayment;
+	
 	public void btnNext() {
 		btnNext.click();
+	}
+	
+	public void contry() {
+		wait.until(ExpectedConditions.visibilityOf(country));
+		country.sendKeys("Brazil");
 	}
 	
 	public void safePayUserName() throws Exception {
@@ -44,6 +58,10 @@ public class OrdenPaymentPage {
 	
 	public WebElement btnPayNow() {
 		return btnPayNow;
+	}
+	
+	public String confirmOrderPayment()	{
+		return confirmOrderPayment.getText();
 	}
 	
 
