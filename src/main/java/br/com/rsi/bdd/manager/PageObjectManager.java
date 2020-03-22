@@ -2,6 +2,7 @@ package br.com.rsi.bdd.manager;
 
 import org.openqa.selenium.WebDriver;
 
+import br.com.rsi.hub.Utility.Wait;
 import br.com.rsi.hub.pageObjectFactory.CartPage_POF;
 import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
 import br.com.rsi.hub.pageObjectFactory.LoginPage_POF;
@@ -15,6 +16,7 @@ public class PageObjectManager {
 	private ProductsPage_POF productsPage;
 	private CartPage_POF cartPage;
 	private OrdenPaymentPage ordenPayment;
+	private Wait wait;
 	
 	
 	public PageObjectManager(WebDriver driver) {
@@ -36,9 +38,10 @@ public class PageObjectManager {
 	public CartPage_POF getCartPage_POF() {
 		return (cartPage == null) ? cartPage = new CartPage_POF(driver) : cartPage;
 	}
-	
-	public OrdenPaymentPage getOrdenPaymentPage() {
-		return (ordenPayment == null) ? ordenPayment = new OrdenPaymentPage(driver) : ordenPayment;
-				
+
+	public Wait getWait() {
+		return (wait == null) ? wait = new Wait(driver) : wait;
+		
 	}
+	
 }

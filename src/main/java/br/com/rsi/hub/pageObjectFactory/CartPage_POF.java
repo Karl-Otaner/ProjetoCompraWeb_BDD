@@ -22,8 +22,6 @@ public class CartPage_POF {
 	
 	
 	public void btnCheckOut() {
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 4000);");
 		btnCheckOutPopUp.click();
 	}
 }

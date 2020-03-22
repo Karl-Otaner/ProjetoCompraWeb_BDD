@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import br.com.rsi.hub.Utility.ConstantExcel;
 
 public class WebDriverManager {
-	private WebDriver driver;
+	public static WebDriver driver;
 	
 	public WebDriver createDriver() {
 		if(driver == null) {

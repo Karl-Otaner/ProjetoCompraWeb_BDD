@@ -1,5 +1,6 @@
 package br.com.rsi.hub.pageObjectFactory;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ import br.com.rsi.hub.Utility.MassOfData;
 public class OrdenPaymentPage {
 	WebDriver driver;
 	MassOfData mass;
-	WebDriverWait wait = new WebDriverWait(driver, 15);
+//	WebDriverWait wait = new WebDriverWait(driver, 15);
 	
 	public OrdenPaymentPage(WebDriver driver) {
 		this.driver = driver;
@@ -21,10 +22,8 @@ public class OrdenPaymentPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(how = How.NAME, using = "countryListbox")
-	private WebElement country;
 	
-	@FindBy(how = How.ID, using = "next_btnundefined")
+	@FindBy(how = How.ID, using = "next_btn")
 	private WebElement btnNext;
 	
 	@FindBy(how = How.NAME, using = "safepay_username")
@@ -39,16 +38,11 @@ public class OrdenPaymentPage {
 	@FindBy(how = How.XPATH, using = "//span[@class='roboto-regular ng-scope']")
 	private WebElement confirmOrderPayment;
 	
-	
-	public void country() {
-		wait.until(ExpectedConditions.visibilityOf(country));
-		country.sendKeys("Brazil");
-	}
-	
-	public void btnNext() {
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.elementToBeClickable(btnNext));
-		btnNext.click();
+	public WebElement btnNext() {
+//		WebDriverWait wait = new WebDriverWait(driver, 60);
+//		wait.until(ExpectedConditions.elementToBeClickable(btnNext)).click();
+		return btnNext;
+		
 	}
 
 	public void safePayUserName() throws Exception {

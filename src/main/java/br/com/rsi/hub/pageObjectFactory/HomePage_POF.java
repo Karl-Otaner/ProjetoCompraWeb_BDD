@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import br.com.rsi.hub.dataProvider.ConfigFileReader;
 
 public class HomePage_POF {
-	WebDriver driver;
+	private WebDriver driver;
 
 	public HomePage_POF(WebDriver driver) {
 		this.driver = driver;

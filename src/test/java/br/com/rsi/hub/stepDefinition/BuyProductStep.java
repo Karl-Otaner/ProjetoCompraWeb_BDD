@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import br.com.rsi.hub.Utility.Wait;
 import br.com.rsi.hub.context.TestContext;
 import br.com.rsi.hub.pageObjectFactory.CartPage_POF;
 import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
@@ -21,6 +22,7 @@ public class BuyProductStep {
 	LoginPage_POF login;
 	ProductsPage_POF product;
 	CartPage_POF cart;
+	Wait wait;
 //	PageObjectManager objectManager;
 //	ConfigFileReader configFileReader;
 //	WebDriverManager webDriverManager;
@@ -33,6 +35,8 @@ public class BuyProductStep {
 		login = testContext.getPageObjectManager().getLoginPage_POF();
 		product = testContext.getPageObjectManager().getProductsPage_POF();
 		cart = testContext.getPageObjectManager().getCartPage_POF();
+		wait = testContext.getPageObjectManager().getWait();
+		
 //		webDriverManager = testContext.getDriverManager();
 	}
 	
@@ -68,8 +72,8 @@ public class BuyProductStep {
 
 	@Quando("^clicar em next digitar um usuario e senha para boleto e finalizar a compra$")
 	public void clicarEmNextDigitarUmUsuarioESenhaParaBoletoEFinalizarACompra() throws Throwable {
-		Thread.sleep(3000);
-		ordenPayment.country();
+		Thread.sleep(19000);
+		wait.NextBnt(ordenPayment.btnNext());
 		ordenPayment.btnNext();
 		ordenPayment.safePayUserName();
 		ordenPayment.safePayPassWord();
