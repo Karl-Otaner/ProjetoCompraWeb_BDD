@@ -62,13 +62,14 @@ public class BuyProductStep {
 		product.lapTopHP11d();
 		product.color();
 		product.addCart();
-		home.menuCart();
 		cart.btnCheckOut();
 
 	}
 
 	@Quando("^clicar em next digitar um usuario e senha para boleto e finalizar a compra$")
 	public void clicarEmNextDigitarUmUsuarioESenhaParaBoletoEFinalizarACompra() throws Throwable {
+		Thread.sleep(3000);
+		ordenPayment.country();
 		ordenPayment.btnNext();
 		ordenPayment.safePayUserName();
 		ordenPayment.safePayPassWord();

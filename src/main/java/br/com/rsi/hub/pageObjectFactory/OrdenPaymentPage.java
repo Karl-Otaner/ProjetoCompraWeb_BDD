@@ -20,12 +20,12 @@ public class OrdenPaymentPage {
 		mass = new MassOfData();
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(how = How.ID, using = "next_btn")
-	private WebElement btnNext;
-	
-	@FindBy(how = How.ID, using = "countryListbox")
+
+	@FindBy(how = How.NAME, using = "countryListbox")
 	private WebElement country;
+	
+	@FindBy(how = How.ID, using = "next_btnundefined")
+	private WebElement btnNext;
 	
 	@FindBy(how = How.NAME, using = "safepay_username")
 	private WebElement safePayUserName;
@@ -39,15 +39,18 @@ public class OrdenPaymentPage {
 	@FindBy(how = How.XPATH, using = "//span[@class='roboto-regular ng-scope']")
 	private WebElement confirmOrderPayment;
 	
-	public void btnNext() {
-		btnNext.click();
-	}
 	
-	public void contry() {
+	public void country() {
 		wait.until(ExpectedConditions.visibilityOf(country));
 		country.sendKeys("Brazil");
 	}
 	
+	public void btnNext() {
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.until(ExpectedConditions.elementToBeClickable(btnNext));
+		btnNext.click();
+	}
+
 	public void safePayUserName() throws Exception {
 		safePayPassWord.sendKeys(mass.safePayUserName());
 	}

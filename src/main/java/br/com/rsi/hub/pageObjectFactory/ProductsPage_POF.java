@@ -28,7 +28,7 @@ public class ProductsPage_POF {
 	@FindBy(how = How.ID, using = "13")
 	private WebElement headPhoneBose;
 	
-	@FindBy(how = How.XPATH, using = "roboto-medium ng-scope")
+	@FindBy(how = How.XPATH, using = "/html[1]/body[1]/div[3]/section[1]/article[1]/div[2]/div[2]/h2[1]/span[1]")
 	private WebElement soudOut;
 	
 	public void lapTopHP11d() {

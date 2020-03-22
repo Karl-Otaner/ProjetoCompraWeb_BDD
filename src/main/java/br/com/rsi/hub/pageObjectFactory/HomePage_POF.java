@@ -1,5 +1,6 @@
 package br.com.rsi.hub.pageObjectFactory;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,8 +31,8 @@ public class HomePage_POF {
 	@FindBy(how = How.ID, using = "headphonesImg")
 	private WebElement headPhones;
 	
-	@FindBy(how = How.ID, using = "menuCart")
-	private WebElement menuCart;
+//	@FindBy(how = How.NAME, using = "menuCart")
+//	private WebElement menuCart;
 
 	public void linkLogin() {
 		linkLogin.click();
@@ -42,17 +43,16 @@ public class HomePage_POF {
 	}
 
 	public void lapTop() {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.visibilityOf(laptop));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 2000);");
 		laptop.click();
 	}
 
 	public void headPhones() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 2000);");
 		headPhones.click();
 	}
 	
-	public void menuCart() {
-		menuCart.click();
-	}
 
 }
