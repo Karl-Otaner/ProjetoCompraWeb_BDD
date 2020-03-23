@@ -1,7 +1,12 @@
 package br.com.rsi.hub.runner;
 
 
+import java.io.File;
+
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+
+import com.cucumber.listener.Reporter;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
@@ -17,6 +22,9 @@ import cucumber.api.junit.Cucumber;
 		)
 
 public class TestRunner {
-	
+//	@AfterClass
+//	public static void  ExtentReport() {
+//	Reporter.loadXMLConfig(new File("configs/extension-config.xml"));
+//	}
 
 }

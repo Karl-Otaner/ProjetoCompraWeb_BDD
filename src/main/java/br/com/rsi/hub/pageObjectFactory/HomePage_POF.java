@@ -50,8 +50,9 @@ public class HomePage_POF {
 		passWord.sendKeys(mass.passWord());
 	}
 	
-	public void btnSignIn() {
-		btnSignIn.click();
+	public void btnSignIn() throws InterruptedException {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", btnSignIn);
 	}
 	
 	public void headPhonesImg() {

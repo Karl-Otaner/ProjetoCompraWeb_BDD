@@ -24,10 +24,8 @@ public class BuyProductStep {
 		testContext = context;
 		home = testContext.getPageObjectManager().getHomePage();
 		product = testContext.getPageObjectManager().getProdutoPage();
-	
 		
 	}
-	
 	
 	@Dado("^Usuario esta no site do Advantage Shopping$")
 	public void usuarioEstaNoSiteDoAdvantageShopping() throws Throwable {
@@ -71,6 +69,7 @@ public class BuyProductStep {
 
 	@Quando("^e finalizar a compra$")
 	public void e_finalizar_a_compra() throws Throwable {
+		Thread.sleep(3000);
 		product.btnPayNow();
 	}
 
