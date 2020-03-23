@@ -34,14 +34,10 @@ public class HomePage_POF {
 	@FindBy(how = How.ID, using = "sign_in_btnundefined")
 	private WebElement btnSignIn;
 	
-	@FindBy(how = How.XPATH, using = "//header//li[3]")
-	private WebElement logged;
-
-	@FindBy(how = How.ID, using = "laptopsImg")
-	private WebElement laptop;
-
 	@FindBy(how = How.ID, using = "headphonesImg")
-	private WebElement headPhones;
+	private WebElement headPhonesImg;
+
+
 	
 	public void linkLogin() {
 		linkLogin.click();
@@ -58,21 +54,10 @@ public class HomePage_POF {
 		btnSignIn.click();
 	}
 	
-	public String logged() {
-		return logged.getText();
+	public void headPhonesImg() {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", headPhonesImg);
 	}
 
-	public void lapTop() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
-		laptop.click();
-	}
-
-	public void headPhones() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
-		headPhones.click();
-	}
-	
 
 }

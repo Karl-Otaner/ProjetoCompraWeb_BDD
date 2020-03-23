@@ -9,25 +9,19 @@ import br.com.rsi.hub.pageObjectFactory.ProductsPage_POF;
 public class PageObjectManager {
 	private WebDriver driver;
 	private HomePage_POF homePage;
-	private ProductsPage_POF productsPage;
-	private Wait wait;
-	
-	
+	private ProductsPage_POF produtopage;
+
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-	public HomePage_POF getHomePage_POF() {
+
+	public HomePage_POF getHomePage() {
 		return (homePage == null) ? homePage = new HomePage_POF(driver) : homePage;
 	}
-	
-	public ProductsPage_POF getProductsPage_POF() {
-		return (productsPage == null) ? productsPage = new ProductsPage_POF(driver) : productsPage;
-	}
 
-	public Wait getWait() {
-		return (wait == null) ? wait = new Wait(driver) : wait;
-		
+	public ProductsPage_POF getProdutoPage() {
+		return (produtopage == null) ? produtopage = new ProductsPage_POF(driver) : produtopage;
+
 	}
 	
 }

@@ -23,7 +23,7 @@ public class Hooks {
 
 	@Before
 	public void createDriverConfigsTest() throws Exception {
-		context.getDriverManager().createDriver();
+		context.getWebDriverManager().createDriver();
 	}
 
 	@After(order = 1)
@@ -32,7 +32,7 @@ public class Hooks {
 
 		String screenshotName = scenario.getName().replaceAll(" ", "_");
 		try {
-			File sourcePath = ((TakesScreenshot) context.getDriverManager().createDriver())
+			File sourcePath = ((TakesScreenshot) context.getWebDriverManager().createDriver())
 					.getScreenshotAs(OutputType.FILE);
 
 			File destinationPath = new File(
@@ -49,7 +49,7 @@ public class Hooks {
 
 	@After(order = 0)
 	public void killConfigsTest() {
-		context.getDriverManager().killDriver();
+		context.getWebDriverManager().killDriver();
 	}
 
 }

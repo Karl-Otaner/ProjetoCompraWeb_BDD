@@ -11,7 +11,9 @@ Funcionalidade: Finalizar a compra de um produto no site Advantage Shopping
 	Cenario: Buscar produtod validos na tela principal
 		E escolhe um produto pela tela principal
 		E adicionar ao carrinho e fazer checkout
-		E clicar em next digitar um usuario e senha para boleto e finalizar a compra
+		E clicar em next 
+		E digitar um usuario e senha 
+		E e finalizar a compra
 		Entao validar a compra feita
 		
 	@Falha

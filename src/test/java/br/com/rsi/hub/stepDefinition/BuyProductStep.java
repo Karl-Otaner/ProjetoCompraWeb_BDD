@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
 
+import br.com.rsi.bdd.manager.WebDriverManager;
 import br.com.rsi.hub.Utility.Wait;
 import br.com.rsi.hub.context.TestContext;
 import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
@@ -13,7 +14,7 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class BuyProductStep {
-	WebDriver driver;
+	WebDriver driver = WebDriverManager.driver;
 	HomePage_POF home;
 	ProductsPage_POF product;
 	Wait wait;
@@ -21,16 +22,16 @@ public class BuyProductStep {
 	
 	public BuyProductStep(TestContext context) {
 		testContext = context;
-		home = testContext.getPageObjectManager().getHomePage_POF();
-		product = testContext.getPageObjectManager().getProductsPage_POF();
-		wait = testContext.getPageObjectManager().getWait();
+		home = testContext.getPageObjectManager().getHomePage();
+		product = testContext.getPageObjectManager().getProdutoPage();
+	
 		
 	}
 	
 	
 	@Dado("^Usuario esta no site do Advantage Shopping$")
 	public void usuarioEstaNoSiteDoAdvantageShopping() throws Throwable {
-		testContext.getDriverManager().createDriver();
+		testContext.getWebDriverManager().createDriver();
 	}
 
 	@Quando("^Fazer login$")
@@ -44,53 +45,55 @@ public class BuyProductStep {
 
 	@Quando("^escolhe um produto pela tela principal$")
 	public void escolheUmProdutoPelaTelaPrincipal() throws Throwable {
-		home.lapTop();
+		home.headPhonesImg();
 
 	}
 
 	@Quando("^adicionar ao carrinho e fazer checkout$")
 	public void adicionarAoCarrinhoEFazerCheckout() throws Throwable {
-		product.lapTopHP11d();
-		product.color();
+		product.headPhoneBeats();
 		product.addCart();
 		product.clicaBtnCheckout();
 
 	}
 
-	@Quando("^clicar em next digitar um usuario e senha para boleto e finalizar a compra$")
-	public void clicarEmNextDigitarUmUsuarioESenhaParaBoletoEFinalizarACompra() throws Throwable {
-//		Thread.sleep(19000);
+	@Quando("^clicar em next$")
+	public void clicar_em_next() throws Throwable {
 		product.btnNext();
 
-		product.safePayUserName();
-		product.safePayPassWord();
-		product.btnPayNow();
-	}
 	
-	@Entao("^validar a compra feita$")
-	public void validarACompraFeita() throws Throwable {
-		assertTrue(product.confirmOrderPayment().contains("Thank you for buying with Advantage"));
-	   
 	}
 
+	@Quando("^digitar um usuario e senha$")
+	public void digitar_um_usuario_e_senha() throws Throwable {
+		product.safePayUserName();
+		product.safePayPassWord();
+
+	}
+
+	@Quando("^e finalizar a compra$")
+	public void e_finalizar_a_compra() throws Throwable {
+		product.btnPayNow();
+	}
+
+	@Entao("^validar a compra feita$")
+	public void validarACompraFeita() throws Throwable {
+		assertTrue(driver.getPageSource().contains("Thank you for buying with Advantage"));
+	}
 
 	@Quando("^escolher um Headphone sem saldo$")
 	public void escolherUmHeadphoneSemSaldo() throws Throwable {
-		home.headPhones();
-
+		home.headPhonesImg();
 	}
 
 	@Quando("^ir para tela do produto$")
 	public void irParaTelaDoProduto() throws Throwable {
 		product.headPhoneBose();
-
 	}
 
 	@Entao("^validar que nao ha saldo$")
 	public void validarQueNaoHaSaldo() throws Throwable {
 		assertTrue(product.soudOut().contains("SOLD OUT"));
-
 	}
-
 
 }
