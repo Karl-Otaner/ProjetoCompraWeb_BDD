@@ -47,8 +47,6 @@ public class ProductsPage_POF {
 	@FindBy(how = How.ID, using = "pay_now_btn_SAFEPAY")
 	private WebElement btnPayNow;
 	
-//	@FindBy(how = How.XPATH, using = "//span[@class='roboto-regular ng-scope']")
-//	private WebElement confirmOrderPayment;
 	
 	@FindBy(how = How.ID, using = "13")
 	private WebElement headPhoneBose;
@@ -76,7 +74,6 @@ public class ProductsPage_POF {
 	
 	public void btnNext() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("arguments[0].click();", btnNext);
 		js.executeScript("javascript:window.scrollBy(0,300)");
 		btnNext.click();
 	}
@@ -91,14 +88,13 @@ public class ProductsPage_POF {
 	}
 	
 	public void btnPayNow() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.visibilityOf(btnPayNow));
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("arguments[0].click();", btnPayNow);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", btnPayNow);
 	}
 	
 	public void headPhoneBose() {
-		headPhoneBose.click();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", headPhoneBose);
 	}
 	
 	public String soudOut() {

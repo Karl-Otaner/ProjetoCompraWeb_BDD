@@ -60,8 +60,6 @@ public class BuyProductStep {
 	@Quando("^clicar em next$")
 	public void clicar_em_next() throws Throwable {
 		product.btnNext();
-
-	
 	}
 
 	@Quando("^digitar um usuario e senha$")
@@ -79,6 +77,7 @@ public class BuyProductStep {
 	@Entao("^validar a compra feita$")
 	public void validarACompraFeita() throws Throwable {
 		assertTrue(driver.getPageSource().contains("Thank you for buying with Advantage"));
+		
 	}
 
 	@Quando("^escolher um Headphone sem saldo$")
