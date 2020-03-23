@@ -2,15 +2,11 @@ package br.com.rsi.hub.stepDefinition;
 
 import static org.junit.Assert.assertTrue;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import br.com.rsi.hub.Utility.Wait;
 import br.com.rsi.hub.context.TestContext;
-import br.com.rsi.hub.pageObjectFactory.CartPage_POF;
 import br.com.rsi.hub.pageObjectFactory.HomePage_POF;
-import br.com.rsi.hub.pageObjectFactory.LoginPage_POF;
-import br.com.rsi.hub.pageObjectFactory.OrdenPaymentPage;
 import br.com.rsi.hub.pageObjectFactory.ProductsPage_POF;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
@@ -19,25 +15,16 @@ import cucumber.api.java.pt.Quando;
 public class BuyProductStep {
 	WebDriver driver;
 	HomePage_POF home;
-	LoginPage_POF login;
 	ProductsPage_POF product;
-	CartPage_POF cart;
 	Wait wait;
-//	PageObjectManager objectManager;
-//	ConfigFileReader configFileReader;
-//	WebDriverManager webDriverManager;
 	TestContext testContext;
-	OrdenPaymentPage ordenPayment;
 	
 	public BuyProductStep(TestContext context) {
 		testContext = context;
 		home = testContext.getPageObjectManager().getHomePage_POF();
-		login = testContext.getPageObjectManager().getLoginPage_POF();
 		product = testContext.getPageObjectManager().getProductsPage_POF();
-		cart = testContext.getPageObjectManager().getCartPage_POF();
 		wait = testContext.getPageObjectManager().getWait();
 		
-//		webDriverManager = testContext.getDriverManager();
 	}
 	
 	
@@ -49,9 +36,9 @@ public class BuyProductStep {
 	@Quando("^Fazer login$")
 	public void fazerLogin() throws Throwable {
 		home.linkLogin();
-		login.userName();
-		login.passWord();
-		login.btnSignIn();
+		home.userName();
+		home.passWord();
+		home.btnSignIn();
 
 	}
 
@@ -66,23 +53,23 @@ public class BuyProductStep {
 		product.lapTopHP11d();
 		product.color();
 		product.addCart();
-		cart.btnCheckOut();
+		product.clicaBtnCheckout();
 
 	}
 
 	@Quando("^clicar em next digitar um usuario e senha para boleto e finalizar a compra$")
 	public void clicarEmNextDigitarUmUsuarioESenhaParaBoletoEFinalizarACompra() throws Throwable {
-		Thread.sleep(19000);
-		wait.NextBnt(ordenPayment.btnNext());
-		ordenPayment.btnNext();
-		ordenPayment.safePayUserName();
-		ordenPayment.safePayPassWord();
-		ordenPayment.btnPayNow();
+//		Thread.sleep(19000);
+		product.btnNext();
+
+		product.safePayUserName();
+		product.safePayPassWord();
+		product.btnPayNow();
 	}
 	
 	@Entao("^validar a compra feita$")
 	public void validarACompraFeita() throws Throwable {
-		assertTrue(ordenPayment.confirmOrderPayment().contains("Thank you for buying with Advantage"));
+		assertTrue(product.confirmOrderPayment().contains("Thank you for buying with Advantage"));
 	   
 	}
 

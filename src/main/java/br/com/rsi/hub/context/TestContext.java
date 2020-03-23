@@ -20,11 +20,5 @@ public class TestContext {
 		return pageObjectManager;
 	}
 	
-	
-	
-	
-//	public ScenarioContext getScenarioContext() {
-//		return scenarioContext;
-//	}
 
 }

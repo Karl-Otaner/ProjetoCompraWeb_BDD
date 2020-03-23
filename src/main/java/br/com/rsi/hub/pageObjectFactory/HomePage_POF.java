@@ -9,18 +9,30 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.com.rsi.hub.Utility.MassOfData;
 import br.com.rsi.hub.dataProvider.ConfigFileReader;
 
 public class HomePage_POF {
 	private WebDriver driver;
-
+	public MassOfData mass;
+	
 	public HomePage_POF(WebDriver driver) {
 		this.driver = driver;
+		mass = new MassOfData();
 		PageFactory.initElements(driver, this);
 	}
 
 	@FindBy(how = How.ID, using = "menuUser")
 	private WebElement linkLogin;
+	
+	@FindBy(how = How.NAME, using = "username")
+	private WebElement userName;
+	
+	@FindBy(how = How.NAME, using = "password")
+	private WebElement passWord;
+	
+	@FindBy(how = How.ID, using = "sign_in_btnundefined")
+	private WebElement btnSignIn;
 	
 	@FindBy(how = How.XPATH, using = "//header//li[3]")
 	private WebElement logged;
@@ -31,11 +43,19 @@ public class HomePage_POF {
 	@FindBy(how = How.ID, using = "headphonesImg")
 	private WebElement headPhones;
 	
-//	@FindBy(how = How.NAME, using = "menuCart")
-//	private WebElement menuCart;
-
 	public void linkLogin() {
 		linkLogin.click();
+	}
+	public void userName() throws Exception {
+		userName.sendKeys(mass.userName());
+	}
+	
+	public void passWord() throws Exception {
+		passWord.sendKeys(mass.passWord());
+	}
+	
+	public void btnSignIn() {
+		btnSignIn.click();
 	}
 	
 	public String logged() {
@@ -44,13 +64,13 @@ public class HomePage_POF {
 
 	public void lapTop() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 2000);");
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
 		laptop.click();
 	}
 
 	public void headPhones() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 2000);");
+		js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 3000);");
 		headPhones.click();
 	}
 	

@@ -28,4 +28,5 @@ public class Wait {
 		js.executeScript("arguments[0].click();", element);
 	}
 
+
 }

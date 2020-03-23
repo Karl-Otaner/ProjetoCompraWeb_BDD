@@ -5,11 +5,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import br.com.rsi.hub.Utility.MassOfData;
 
 public class ProductsPage_POF {
 	WebDriver driver;
+	MassOfData mass;
 	
 	public ProductsPage_POF(WebDriver driver) {
+		mass = new MassOfData();
+
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -30,6 +37,26 @@ public class ProductsPage_POF {
 	
 	@FindBy(how = How.XPATH, using = "/html[1]/body[1]/div[3]/section[1]/article[1]/div[2]/div[2]/h2[1]/span[1]")
 	private WebElement soudOut;
+	
+	@FindBy(how = How.ID, using = "checkOutPopUp")
+	private WebElement btnCheckout;
+
+	@FindBy(how = How.ID, using = "next_btn")
+	private WebElement btnNext;
+	
+	@FindBy(how = How.NAME, using = "safepay_username")
+	private WebElement safePayUserName;
+	
+	@FindBy(how = How.NAME, using = "safepay_password")
+	private WebElement safePayPassWord;
+	
+	@FindBy(how = How.ID, using = "pay_now_btn_SAFEPAY")
+	private WebElement btnPayNow;
+	
+	@FindBy(how = How.XPATH, using = "//span[@class='roboto-regular ng-scope']")
+	private WebElement confirmOrderPayment;
+	
+	
 	
 	public void lapTopHP11d() {
 		lapTopHP11d.click();
@@ -55,4 +82,31 @@ public class ProductsPage_POF {
 		return soudOut.getText();
 	}
 
+	public void clicaBtnCheckout() {
+		btnCheckout.click();
+	}
+	
+	public void btnNext() {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(btnNext)).click();
+	}
+
+	public void safePayUserName() throws Exception {
+		safePayPassWord.sendKeys(mass.safePayUserName());
+	}
+	
+	public void safePayPassWord() throws Exception {
+		safePayPassWord.sendKeys(mass.safePayPassWord());
+	}
+	
+	public WebElement btnPayNow() {
+		return btnPayNow;
+	}
+	
+	public String confirmOrderPayment()	{
+		return confirmOrderPayment.getText();
+	}
+
+	
+	
 }
